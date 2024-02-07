@@ -1,16 +1,23 @@
-# This is a sample Python script.
+import logging
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from display.excited_display import ExcitedDisplay
+from stock.stock import Stock
+from display.display import Display
 
+logging.basicConfig(format="%(asctime)s %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p")
+logger = logging.getLogger(__name__)
+logger.setLevel("INFO")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+logger.info("Initializing program")
 
+stock = Stock()
+display = Display()
+excited_display = ExcitedDisplay()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+stock.attach(display)
+stock.attach(excited_display)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+stock.price = 5
+stock.price = 12
+stock.price = 15
+stock.price = 25
